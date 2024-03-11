@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>Training_Listening_to_Audio</title>
+    <meta name="description" content="a sensorial way to analyze Grav wave data.">
+    <meta name="author:Christian Hetlagge, Wanda Diaz Merced" content="Disecting the gravitational wave spectra">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style media="screen">
+        body { font: 16px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+            color: #444;
+            text-align: justify;
+
+            margin:0 auto;
+            /*margin-left: 0 auto;*/
+
+            /* max-width: 900px; */
+            align-items: center;
+
+            font-size: medium;
+
+            padding: 20px;
+            word-spacing:8px;/*spacing of word*/
+            background-color:ghostwhite;
+            line-height: 1.8;/*spacing of lines*/
+            font-size: unset;
+            font-family:'Courier New', Courier, monospace;}
+        /*added the line below for gridding*/
+
+
+        /*added the line above for gridding*/
+        code { color: #777; font-family: "Source Code Pro", "Menlo", "Courier New", monospace;}
+        /*a { color: #178DB1; }deactivated due to the effect of the p inside article*/
+        .container { margin: 20 auto; /*0 auto*/
+            max-width: 900px;}
+        #a + .readmore-js-toggle { padding-bottom: 1.5em; border-bottom: 1px solid #999; font-weight: bold;}
+        #demo { padding: 0 10%; }
+        .a + .readmore-js-toggle {
+            padding-bottom: 1.5em;
+            border-bottom:1px solid #999;
+            font-weight: bold;}
+
+
+
+        /*	body{
+                    text-align: justify;
+                    align-items: center;
+                    font-size: unset;
+                         padding: 20px;}*/
+
+        /** CH: column layout with Flex */
+        .layout {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .main {
+            margin-right: 5em;
+        }
+
+        .settings {
+            max-width: 300px;
+        }
+        /** End: column layout with Flex */
+
+        div.a{
+            text-align:justify;
+            text-size-adjust:12;
+            text-emphasis-color: black;
+            size: 600px; /*thursday*/
+            margin-top: 60px;
+        }
+
+
+
+
+
+
+        /*tomake ComboBoxes for change of font type and font size*/
+        .combobox {
+            display: inline-block;
+            /* position: relative;*/
+            position: static;
+            top: 32px;
+            /*left: 430px;*/
+            left: 1000px
+
+        }
+        .combobox select {
+            display: none;
+            /*position: absolute;*/
+            position:static;
+            overflow-y: auto;
+            left: 1000px
+        }
+        /*finished setting comboboxes*/
+
+        /*setting style of Buttons*/
+        /*button {
+          /* margin-top: 50px;
+           line-height: 60px;
+           margin-left: 1000px;*/
+        /*font-weight: bold;
+        font-size:larger;*/
+        /* padding: 0 40px;
+        background: cornflowerblue;
+        border: none;
+        display: block;
+        }*/
+
+        button:hover {
+            background: brown;}
+
+
+        /*collapsing buttons*/
+        .collapsible {
+            /*background-color: #777;*/
+            color:black;
+            cursor: pointer;
+            padding: 18px;
+            margin-top: 2rem;
+            width: 10rem;
+            border: none;
+            text-align: center;
+            outline: none;
+            font-size: larger;
+            font-weight: bold;
+            /*left: 1000px;*/
+            display:block;
+            background:cornflowerblue;
+        }
+
+
+
+
+        /* right: 60px*/
+
+
+
+
+        .active,.collapsible:hover {
+            background-color: brown;
+        }
+
+
+
+        .content  {
+            /* padding: 0 18px;*/
+
+            max-height: 0px;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+
+            display: block;
+            /* added below to position whre i want it*/
+
+            padding: 0 200px;
+            /*background: cornflowerblue;*/
+            color: cornflowerblue;
+            /*background-color: white;*/
+            /*margin-left: 1000px;*/
+
+
+
+
+
+
+        }
+
+        .accordion{
+            /*background-color:orangered;*/
+            color:black;
+            cursor: pointer;
+            /*padding: 100px;*/
+            /*width: 20%;*/
+            border: none;
+            text-align: center;
+            outline: none;
+            /*font-size: 15px;*/
+            transition: 0.4s;
+            /*margin-top: 500px;*/
+            /*line-height: 60px;*/
+            /*margin-left: 1000px;*/
+            font-weight: bold;
+            font-size:larger;
+            padding: 18px;
+            margin-top: 2rem;
+            background: cornflowerblue;
+            /*border: none;*/
+            display: block;
+            width: 10rem;
+        }
+
+        .active, .accordion:hover {
+            background-color:brown;
+        }
+
+        /*new accordeon 5 march 2022*/
+        .Accordion-trigger {
+    background: none;
+    color: hsl(0, 0%, 13%);
+    display: block;
+    font-size: 1rem;
+    font-weight: normal;
+    margin: 0;
+    padding: 1em 1.5em;
+    position: relative;
+    text-align: left;
+    width: 100%;
+    outline: none;
+  }
+
+.Accordion-trigger:focus,
+.Accordion-trigger:hover {
+  background: hsl(216, 94%, 94%);
+}
+
+.Accordion *:first-child .Accordion-trigger {
+  border-radius: 5px 5px 0 0; }
+
+
+        /*end new accordion 5march */
+
+        .panel {
+            /*padding: 0 200px;*/
+            background-color: white;
+            max-height: 0;
+            min-width: 10rem;
+            /* width: 400px;*/
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            /*panel*/
+
+            margin-top: 5px;
+            line-height: 60px;
+            /*margin-left: 1000px;*/
+            font-weight: bold;
+            font-size:larger;
+            /*padding: 0 40px;*/
+            /* background: cornflowerblue;*/
+            border: none;
+            display: block
+            /*end panel*/
+
+        }
+
+        .icon-foo {
+            display: inline-block;
+            width: 100px;
+            height: 20px;
+            background-image: url("http://placehold.it/350x150");
+            background-position: 0 0;
+        }
+
+        /* CH: Leave space above checkbox */
+        .dialog {
+            margin-top: 2rem;
+        }
+        /* End: Leave space above checkbox */
+
+/*        .dialog{
+            / *position: absolute;* /
+            position:fixed;
+            align-items: right;
+            margin-right: 60px;
+            margin-left: 1000px;
+            top: 10px;
+            right: 250px; / *120* /
+            width: 100px;
+            height: 50px;
+
+
+
+        } */
+
+        /*styling position for savechoices checkbox*/
+/*        .carryIt{
+            / *position: absolute;* /
+            position: fixed;
+            align-items: right;
+            margin-right: 60px;
+            margin-left: 1000px;
+            top: 80px;
+            / *right: 250px;* /
+            width: 100px;
+            height:50px;
+            left: 1000px
+        } */
+        .combobox {
+            /* display: inline-block;*/
+            /* position: relative;*/
+            position: fixed;
+            top: 32px;
+            /*left: 430px;*/
+            left: 1000;
+            align-items: right;
+            margin-left: 1000px;
+            display:right;
+
+        }
+/*        .combobox select {
+            display: block;
+            position: fixed;
+            position:static;
+            display:right;
+
+
+        } */
+        #wrapper{
+            width: 400px;
+            height: 40px;
+            margin-left: 1000;
+            /* overflow: scroll;*/
+
+        }
+
+        /* CH: styling headings */
+        h1, h2 {
+            text-decoration: underline;
+        }
+
+        h2 {
+            font-size: 1.2em;
+        }
+        /* end: styling headings */
+    </style>
+</head>
+<body>
+
+<!-- invisible link to jump directly to buttons or main content-->
+<nav>
+    <ul class="button">
+        <!--  <li><a href="button">skip</a></li>-->
+        <!-- <li><a link="button area", tabindex="0", accesskey="p", onclick = "button();"></a></li>-->
+    </ul>
+</nav>
+<!--end of setting up invisible area to jump directly to buttons area-->
+<div class=“a” role="text" aria-label = "This page has options to
+  customize font size, font type set contrast, activate alerts for error prevention, save your options and select background color to
+  adjust text contrasts automatically, shorcut keys to access those options are activated using the assitive technology shorcut keys
+  key of your sistem and the lower case letter. On mac the collapsible areas are expanded pressing at the same time spacebar control and option  for example in mac the VO keys plus z wil take you to the area to change font size,
+  VO plays lower case t to change font type and VO plus c to change the back ground and contrast. The shortcut key for each element
+  is underlined which is indicated by the screen reader for example in mac the VO keys plus z wil take you to the area to change font size,
+  VO plays lower case t to change font type and VO plus c to change the back ground and contrast. The shortcut key for each element
+  is underlined which is indicated by the screen reader">
+    <p id="textSize2" aria-hidden="false"> </p></div>
+<!--otra aqui abajo a ver si el screen reader se orienta mejor--->
+
+
+<!--<section id="container" , justify-content= "center" align-items= "center">-->
+
+<p id="a" class = "a"> <!--this was not here when i cimpared also the line below on the wrapper -->
+
+    <!-- <div id="wrapper"> --> <!--killed wednesday 17 february 12:15pm as compared with windows.html-->
+
+
+<a class="screen-reader screen-reader-focusable" href="mailto:c.hettlage@saao.nrf.ac.za">Accessibility Feedback</a>
+
+
+<div class="layout">
+<div class ="main" id="main">
+    <section id="container">
+
+        <p id="a" class = "a">
+            <p><strong>The download attribute is not supported in IE, Safari or Opera version 12
+                (and earlier).</strong></p>
+
+            <p>On this page, you will find the instructions to install the Windows executables
+            (NOTE: IT WORKS ONLY ON WINDOWS 10 and 11). On the right side of the screen there are
+            two buttons. The first button has options to customise the text font, size and contrast.
+            The second button will offer options for navigating to the home page, to a page on how to carry out the training
+        and to a page with installation instructions
+            for macOS.</p>
+        <p>This experiments are very precise in terms of the synchronicity of the presented
+            visual and audio stimuli, and the timing of the signal. Thanks to the work of the
+            psychtoolbox people the BLV synchronization of the screen has been improved, but it is not
+            perfect due to the limitations of the creation of an installable. If you want accuracy on the
+             signal latency and better control of attention modalities, we have packages available which
+             may be run on the free GNUOctave. You may require a copy writing to
+             c.hettlage at saao.nrf.ac.za.</p>
+
+        <p>If you are using Linux, we are sorry you cannot use the software at this stage.</p>
+
+            <h2>Installing the training software</h2>
+
+    <p>At the bottom of this page you will find the links for Windows executables. Each executable is different
+    from the others in the number of stimuli presented.  It may be only an audio training, or a
+    training containing, audio, visual and audio visual together, or it may contain audio only,
+    visual only, visual and audio and visual and audio with a red line running across the spectra or
+    may have a number or those stimuli giving you the option to review your answers.  The trainings
+        may present display on only or combination of the following 4 conditions namely:</p>
+
+        <ul>
+            <li>audio only</li>
+
+            <li>visual only</li>
+
+            <li>audio and visual together</li>
+
+            <li>audio and visual with a redline sweeping across the visual display</li>
+  <li>audio and visual with a redline sweeping across the visual display giving you the option to review
+      your answers</li>
+        </ul>
+
+  <p>The folder name indicates how many conditions are used. The training uses repeated measures and a staircase
+  algorithm to approximate your performance. The responses will be saved in the training or experiment
+      folder under a name you will indicate at the beginning, when the application requests you to input a name. It has to be a combination of 8 letters with no spaces.</p>
+        <p>After you insert a name and press ok, the experiment will begin and present several blocks for each condition.</p>
+
+
+
+            <h2>Instructions to install the training executable for Windows</h2>
+
+        <ol>
+            <li>Select one training/experiment from the list below and click on it to download it.</li>
+            <li>Open the downloaded folder.</li>
+            <li>Go to the folder called for_redistribution and install the executable that is
+                in there by clicking on it. The name is myAppInstaller_web.</li>
+
+            <li>Go to the folder called for_redistribution_files_only.</li>
+
+            <li>Run (click) the executable in that folder. The experiment will start, giving you instructions. Just follow them.
+        </li>
+        </ol>
+
+        <h2>Troubleshooting</h2>
+
+    <p>If there are problems, the reason might be that your security settings did not allow
+    the Matlab runtime to install. In this case you need to install matlabruntime2020a manually. It is available for
+        free from <a href="https://www.mathworks.com/products/compiler/matlab-runtime.html">https://www.mathworks.com/products/compiler/matlab-runtime.html</a>.
+
+        <h2>Downloads</h2>
+        <p>Click on the links below to download the executables.</p>
+
+        <p>
+        <a href="BlackHoleAudioOnlyNoSpeechStndAlnWindows" download="BlackHoleAudioOnlyNoSpeechStndAlnWindows" alt="BlackHoleAudioOnlyNoSpeechStndAlnWindows" >
+            AudioAloneWindows</a>
+        <!--<button type="button">Download</button>-->
+        <br>
+        <a href="BlackHoleSoundOnlyNoVisualDisplay" download="BlackHoleSoundOnlyNoVisualDisplay" alt="BlackHoleSoundOnlyNoVisualDisplay" >
+            BlackHoleSpeechSoundOnlyNoVisualDisplay</a>
+        <!--<button type="button">Download</button>-->
+        <br>
+        <a href="BlackHole3CondStndAloneWindows" download="BlackHole3CondStndAloneWindows" alt="BlackHole3CondStndAloneWindows" >
+            3ConditionsTraningWindows</a>
+        <!--<button type="button">Download</button>-->
+        <br>
+        <a href="BlackHole3CondMac" download="BlackHole3CondMac" alt="BlackHole3CondMac" >
+            3ConditionsNoTraning</a>
+        <!--<button type="button">Download</button>-->
+        <br>
+        <a href="BlackHole4CondNoTrain" download="BlackHole4CondNoTrain" alt="BlackHole4CondNoTrain" >
+            4ConditionsNoTrainingWindows</a>
+        <!--<button type="button">Download</button>-->
+        <br>
+        <a href="BlackHole4CondsWindowsStndAlone" download="BlackHole4CondsWindowsStndAlone" alt="4CondNoTraining" >
+            4ConditionsTraining</a>
+        <!--<button type="button">Download</button>-->
+    </section>
+  </div>
+  <div class="settings">
+
+
+  <div
+          id="dialog"
+          class="warning"
+          role="dialog"
+          aria-labelledby="title"
+          aria-describedby="description"
+          accesskey="d">
+      <label>
+          activate a<u>l</u>erts:
+          <input id="toggle-alerts" accesskey="l" type="checkbox"  role="text" aria-label = "this page alerts for error prevention check the box to activate" onchange="saveChoices()"/> <!--add the word checked if you want the box checked by default, if you do that then the alerts will show by default everytime a button is pressed for error prevention-->
+      </label>
+  </div>
+  <div id="accordionGroup" class="Accordion"><!--</div>closing divsion for wrapper which i killed 17 of february--><!-- si hay problema 12:35 es la linea que puse aqui 5 marzo-->
+      <div id="sect1"
+             role="region"
+             aria-labelledby="accordion1id"
+             class="Accordion-panel">
+          <div><!--trabaja a las 15:44pm y yo pongo esta subdivision aqui debajo  a ver que pasa -->
+     <button id= "accordion-header-1 sect1 accordion1id" class="accordion accordion-trigger"
+     aria-label="options to customize font type size and contrast"
+     aria-expanded="false"
+     aria-labelledby="Accordion-panel"
+     aria-flowto=" form panel  GoTo article"  accesskey="i"
+     role="button  region text"  aria-expanded="true"
+     aria-controls="accordion-header-1  data-accordion-header accordion Accordion-trigger">custom<u>i</u>ze</button> <!--5 march original it was working well substituted for below to check-->
+
+
+<!--trabaja a las 15:44pm y yo pongo esta subdivision aqui arriba  a ver que pasa -->
+
+ <!--<button class="accordion" accesskey="8" role="button"  aria-expanded="true" aria-controls="true" aria-labelledby="accordion-header-1">customize</button><svg aria-hidden="true">...</svg> -->
+<!--5 march below added a sexction 18:20pm it was almost working properly before -->
+
+<!-- end of section -->
+<!-- <section id="accordion-panel-1"
+aria-labelledby="accordion-header-1"
+hidden>
+<p> -->
+<!-- end of section -->
+<div class="panel">
+
+          <div class="form"> <!-- for section -->
+
+              <form >
+                  <label for="fontType"><u>f</u>ont-type</label>
+                  <select
+                          id="select-font"
+                          name="file"
+                          onchange="fontType(this.form.elements[0])"
+                          target="_parent._top"
+                          onmouseclick="this.focus()"
+
+                          accesskey="f"
+                          onkeypress="fontType(this.focus())"
+                  >
+
+                      <!-- original from the one above: onchange="fontType(this);size="14"-->
+                      <option>Georgia</option>
+                      <option>Palatino Linotype</option>
+                      <option>Book Antiqua</option>
+                      <option>Times New Roman</option>
+                      <option>Arial</option>
+                      <option>Helvetica</option>
+                      <option>Arial Black</option>
+                      <option>Impact</option>
+                      <option>Lucida Sans Unicode</option>
+                      <option>Tahoma</option>
+                      <option>Verdana</option>
+                      <option>Courier New</option>
+                      <option>Lucida Console</option>
+                      <!--size of text selection-->
+                      <!--<noscript><input type=></noscript> intented for script input by user did not finish it-->
+                  </select>
+                  <!--added17oct for test not working properly-->
+
+               <!--for section-->
+             <!--for section-->
+                  <!--selections for textsize change-->
+
+
+                  <!--<select onchange="fontSize(this);" size="14"> do not activate this line-->
+                  <label for="Text Size">text-Si<u>z</u>e</label>
+
+                  <select id="select-font-size" name="file"
+                          onchange="fontSize(this.form.elements[1])"
+                          target="_parent._top"
+                          onmouseclick="this.focus()"
+                          accesskey="z"
+                          onkeypress="fontType(this.focus())"
+                          aria-label="change your font size"
+                          style="background-color:#ffffff">
+                      <label for="fontSize">ChangeSize</label>
+                      <option>large</option>
+                      <option>medium</option>
+                      <option>small</option>
+                      <option>x-small</option>
+                      <option>xx-small</option>
+                      <option>x-large</option>
+                      <option>xx-large</option>
+                      <option>100%</option>
+                      <option>250%</option>
+                      <option>2cm</option>
+                      <option>100px</option>
+                  </select>
+              <!--for section-->
+
+              </form>
+              </fieldset><!-- closes the fieldset area for collipsables-->
+              <form>
+                  <label for="color"><u>c</u>olor</label>
+                  <select id="my-select" accesskey="c" >
+                      <option value="#F8F8FF">ghostwhite</option>
+                      <option value="#000000">Black</option>
+                      <option value="#add8e6">Blue</option>
+                      <option value="#90ee90">Green</option>
+                      <option value="#ffc0cb">Pink</option>
+                      <option value="#8B4513">Brown</option>
+                      <option value="#FF0000">Red</option>
+                      <option value= "#696969">light Gray</option>
+                  </select>
+              </form>
+
+
+
+
+          </div>
+  </div>
+
+  <!-- buttons-->
+   <!-- 5 march cancelled stopped working original <button id= "collapsible" type="button" class="collapsible , collapsible" accessKey="g" aria-expanded="true" aria-controls="true">GoTo</button>-->
+   <button class="accordion" accesskey="g" role="button region"  aria-expanded="true" aria-controls="panel accordion "><u>G</u>o to</button>
+
+   <div class="panel">
+      <!--  <button class="collapsible">GoTo</button> intento no funciono
+    <div class="panel">-->
+
+      <div id="button sect1 accordion1id GoTo" class="button accordion Accordion-trigger" role=" button region" style="width: 100px; padding:0 10px; color:cornflowerblue;">
+
+          <!-- <p id = "alerts"></p>-->
+          <!--<form  alt-hidden="true", .screenreader="false" -->
+          <!-- work on buttons on HTML-->
+
+
+          <button type="button" role="button" id= "go-to-MacOS" tabindex="0" accesskey="m" src="MacOS.html"><u>m</u>acOS</button>
+          <button type="button" role="button" id= "go-to-Windows" tabindex="0" accesskey="w" src="Windows.html"><u>w</u>indows</button>
+          <button type="button" role="button" id= "go-to-instructionsToCarryTrainingExperiment" tabindex="0" accesskey="n" src="instructionsToCarryTrainingExperiment.html"><u>h</u>ow to do the training</button>
+          <button type="button" role="button" id= "go-to-HomePage" tabindex="0" accesskey="h" src="HomePage.html"><u>h</u>ome</button>
+      </div>
+
+  </div>
+
+      <div class="carryIt">
+          <div
+                  id="carryIt"
+                  class="dialog"
+                  role="dialog"
+                  aria-labelledby="title"
+                  aria-describedby="description">
+              <label>
+                  <u>s</u>ave choices<input id="toggle-save-choices" accesskey="s"    type="checkbox" aria-label = "this page alerts for error prevention check the box to activate" onchange="saveChoices()"/> <!--add the word checked if you want the box checked by default, if you do that then the alerts will show by default everytime a button is pressed for error prevention-->
+              </label>
+          </div>
+      </div>
+
+</div>
+</div>
+  </div> <!--to get rid of letters -->
+  </div> <!--to get rid of letters -->
+
+<!--lets call all the functions to do their work-->
+<!-- for expandable form only the one line below-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- for expandable form only the one line above-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="readmore.js"></script>
+
+<script>/*for read more*/
+
+$('#container').readmore({
+moreLink: '<a href="#">more/less</a>',
+collapsedHeight: 800, //original i used was 500 tuesday 5th of november//
+afterToggle: function(trigger, element, expanded) {
+  if(! expanded) { // The "Close" link was clicked
+    // $('html, body').animate({scrollTop: element.offset().top}, {duration: 100});
+    $('html, body').animate({scrollTop: element.offset().top}, {duration: 100});
+  }
+}
+});
+$('article').readmore({speed: 500});//original was 500
+</script>
+
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+}
+
+
+//nuevas//
+
+
+
+
+
+function introduction() { /*function to set size of font */
+  var x = document.createElement("H3");
+  var y= document.getElementById("introduction");
+  var t = document.createTextNode("");
+  x.appendChild(t);
+  x.style.color="red";
+  document.body.appendChild(x);
+}
+
+/*function for user to customize the font type */
+function fontType(selectTag) {
+  var listValue = selectTag.options[selectTag.selectedIndex].text;
+  setFontType(listValue);
+  /* document.fontType.onclick.selectTag;*/
+  saveChoices();
+}
+
+/* function for setting the font type */
+function setFontType(fontFamily) {
+  document.getElementById("container").style.fontFamily = fontFamily;
+}
+
+/*function for user to custumize font size*/
+function fontSize(selectTag){
+  var listValue = selectTag.options[selectTag.selectedIndex].text;
+  setFontSize(listValue);
+  saveChoices();
+}
+
+/* function for setting the font size */
+function setFontSize(size) {
+  document.getElementById("container").style.fontSize = size;
+}
+
+
+/*lets also obbey the always forgotten mandate of allowing the user to set the contrast and background*/fontSize
+
+
+/*give the user the freedom to adjust color and contrast*/
+/*functions to set background color and contrast*/
+var select = document.querySelector("#my-select");
+var body = document.body;
+select.addEventListener('change', function() {
+  var options = this.options;
+  var selectedOption = options[options.selectedIndex];
+  setBackgroundColor(selectedOption.value);
+  saveChoices();
+});
+
+function setBackgroundColor(backgroundColor) {
+  body.style.background = backgroundColor;
+  /*body.style.textEmphasisStyle =hexcolor;*/
+  body.style.color=getContrast(backgroundColor);
+}
+
+/*more to obbey always forgotten mandate of allowing the
+person to chose color contrast*/
+/*thanks to our collaborators; they said this code is also online.
+it exists under the open source agreement
+at MIT for authorizing us to use their code
+2019 Chris Ferdinandi, MIT License, https://gomakethings.com
+ * Derived from work by Brian Suda, https://24ways.org/2010/calculating-color-contrast/
+ * @param  {String} A hexcolor value
+ * @return {String} The contrasting color (black or white)
+ */
+function getContrast(hexcolor){
+
+  // If a leading # is provided, remove it
+  if (hexcolor.slice(0, 1) === '#') {
+    hexcolor = hexcolor.slice(1);
+  }
+
+  // If a three-character hexcode, make six-character
+  if (hexcolor.length === 3) {
+    hexcolor = hexcolor.split('').map(function (hex) {
+      return hex + hex;
+    }).join('');
+  }
+
+  // Convert to RGB value
+  var r = parseInt(hexcolor.substr(0,2),16);
+  var g = parseInt(hexcolor.substr(2,2),16);
+  var b = parseInt(hexcolor.substr(4,2),16);
+
+  // Get YIQ ratio
+  var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+
+  // Check contrast
+  return (yiq >= 128) ? 'black' : 'white';
+
+};
+/*endfunctions to set background color and contrast*/
+/*happy we were able to obbey mandate of contrast and text size*/
+/*endfunctions to set background color and contrast*/
+/*happy we were able to obbey mandate of contrast and text size*/
+
+/*inserting a ghost image and sound and visual on the file*/
+(function () {
+  "use strict";
+  function replaceTagWithImage() {
+    var element = document.getElementById("a"),
+            icon = '<i class="icon-foo"></i>',
+            iconTag = /\{image\}/g;
+    element.innerHTML = element.innerHTML.replace(iconTag, icon);
+  }
+  replaceTagWithImage();
+
+}());
+/*finish function to insert sound and visual aesthetics and contextualization aids*/
+
+/*below beginning function for audio*/
+function ourAudio() {
+  var x = document.getElementById("audioExample").duration;
+  document.getElementById("audioExample").innerHTML = x;
+}
+/*end of function for audio example*/
+
+/*beginning function for alerts*/
+/*toggle Alerts helped by my brother Christian Hetlage from here function for enabling and disabling alerts */
+function isShowingAlerts() {
+  return document.querySelector("#toggle-alerts").checked;
+}
+/* finished function for enabling and disabling alerts */
+
+/* from here function for navigating to another page */
+function goToUrl(url) {
+  if (isShowingAlerts()) {
+    const isConfirmed = window.confirm("You pressed a button. Press ok to continue.");
+    if (!isConfirmed) {
+      return;
+    }
+  }
+
+  window.location.href = url;
+}
+
+
+/*alerts for buttons */
+function goToButton(button) {
+
+if  (isShowingAlerts()) {
+    const isConfirmed = window.confirm("You pressed a button. Press ok to continue.");
+    if (!isConfirmed) {
+      return;
+    }
+  }
+}
+/* end alerts for buttons
+/* finished function for navigating to another page */
+
+/* finished function for navigating to another page */
+
+
+/* load settings */
+document.addEventListener('DOMContentLoaded', function () {
+  loadChoices()
+})
+
+/* from here adding functionality for navigation buttons */
+
+document.querySelector("#go-to-MacOS").addEventListener("click", () => goToUrl("MacOS.html"));
+document.querySelector("#go-to-Windows").addEventListener("click", () => goToUrl("Windows.html"));
+document.querySelector("#go-to-instructionsToCarryTrainingExperiment").addEventListener("click",()=> goToUrl("instructionsToCarryTrainingExperiment.html"));
+document.querySelector("#go-to-HomePage").addEventListener("click", () => goToUrl("HomePage.html"));
+
+
+/*document.querySelector("#go-to-WhatIsAvAriable").addEventListener("click", () => goToUrl("WhatIsAvAriable.html"));//
+document.querySelector("#go-to-examples").addEventListener("click",()=> goToUrl(""));
+/* finished adding functionality for navigation buttons */
+
+/*button.getElementById('go-to-variable-stars').setAttribute('aria-hidden','true');
+*/
+
+/*alerts Christian Hetlage*/
+/*save choices*/
+/*this is the version one altered by Christian*/
+function isSavingChoices() {
+  return document.querySelector("#toggle-save-choices").checked;
+}
+
+function saveChoices() {
+  if (!isSavingChoices()) {
+    localStorage.clear();
+    return;
+  }
+
+  const useAlerts = document.querySelector("#toggle-alerts").checked;
+  const font = document.querySelector("#select-font").value;
+  const fontSize = document.querySelector("#select-font-size").value;
+  const backgroundColor = document.querySelector("#my-select").value;
+  if (localStorage) {
+    localStorage.setItem(
+            'settings',
+            JSON.stringify({
+              useAlerts: useAlerts,
+              font: font,
+              fontSize: fontSize,
+              backgroundColor: backgroundColor,
+              saveChoices: true
+            }));
+  }
+}
+
+//collapsing accordeon headings //
+ //added today Saturday 5 march 2022//
+ 'use strict';
+const accordionHeaders = document.querySelectorAll('data-accordion-header')
+Array.prototype.forEach.call(accordionHeaders, accordionHeader => {;//original canceled 5th march 2022 substituted for the one below
+ // Array.prototype.slice.call(document.querySelectorAll('.accordion' , '.collapsible')).forEach(function (collapsible) {;
+    // new below 5 march Allow for each toggle to both open and close individually
+var allowToggle = (allowMultiple) ? allowMultiple : accordion.hasAttribute('data-allow-toggle');
+var allowMultiple = accordion.hasAttribute('data-allow-multiple');
+// new below 5 march Create the array of toggle elements for the accordion group
+var triggers = Array.prototype.slice.call(accordion.querySelectorAll('.Accordion-trigger'));
+var panels = Array.prototype.slice.call(accordion.querySelectorAll('.Accordion-panel'));
+//end 5 march substitution end here it is new it may kill it
+
+// 5 march new too line below this one added 5 march 22 for accesibility of accordeon
+
+accordion.addEventListener('click', function (event) {
+  var target = event.target;
+
+  if (target.classList.contains('Accordion-trigger')) {
+    // Check if the current toggle is expanded.
+    //var isExpanded = target.getAttribute('aria-expanded') == 'true';//5 march original cancelled and substituted below
+    var isExpanded = target.getAttribute('aria-expanded') == 'true';
+    //finished sustituting
+
+    //var active = accordion.querySelector('[aria-expanded="true"]');//5 march original cancelled and substituted below
+    var active = accordion.querySelector('[aria-expanded="false"]');
+    //finished substituting
+
+    //
+    // without allowMultiple, close the open accordion
+    if (!allowMultiple && active && active !== target) {
+      // Set the expanded state on the triggering element
+      active.setAttribute('aria-expanded', 'false');
+      // Hide the accordion sections, using aria-controls to specify the desired section
+      document.getElementById(active.getAttribute('aria-controls')).setAttribute('hidden', '');
+
+      // When toggling is not allowed, clean up disabled state
+      if (!allowToggle) {
+        active.removeAttribute('aria-disabled');
+      }
+    }
+
+    if (!isExpanded) {
+      // Set the expanded state on the triggering element
+      target.setAttribute('aria-expanded', 'true');
+      // Hide the accordion sections, using aria-controls to specify the desired section
+      document.getElementById(target.getAttribute('aria-controls')).removeAttribute('hidden');
+
+      // If toggling is not allowed, set disabled state on trigger
+      if (!allowToggle) {
+        target.setAttribute('aria-disabled', 'true');
+      }
+    }
+    else if (allowToggle && isExpanded) {
+      // Set the expanded state on the triggering element
+      target.setAttribute('aria-expanded', 'false');
+      // Hide the accordion sections, using aria-controls to specify the desired section
+      document.getElementById(target.getAttribute('aria-controls')).setAttribute('hidden', '');
+    }
+
+    event.preventDefault();
+  }
+});
+if (target.classList.contains('Accordion-trigger')) {
+    // Check if the current toggle is expanded.
+    var isExpanded = target.getAttribute('aria-expanded') == 'true';
+    var active = accordion.querySelector('[aria-expanded="true"]');
+// without allowMultiple, close the open accordion
+if (!allowMultiple && active && active !== target) {
+      // Set the expanded state on the triggering element
+      active.setAttribute('aria-expanded', 'false');
+      // Hide the accordion sections, using aria-controls to specify the desired section
+      document.getElementById(active.getAttribute('aria-controls')).setAttribute('hidden', '');
+
+      // When toggling is not allowed, clean up disabled state
+      if (!allowToggle) {
+        active.removeAttribute('aria-disabled');
+      }
+    }
+
+    if (!isExpanded) {
+      // Set the expanded state on the triggering element
+      target.setAttribute('aria-expanded', 'true');
+      // Hide the accordion sections, using aria-controls to specify the desired section
+      document.getElementById(target.getAttribute('aria-controls')).removeAttribute('hidden');
+
+      // If toggling is not allowed, set disabled state on trigger
+      if (!allowToggle) {
+        target.setAttribute('aria-disabled', 'true');
+      }
+    }
+    else if (allowToggle && isExpanded) {
+      // Set the expanded state on the triggering element
+      target.setAttribute('aria-expanded', 'false');
+      // Hide the accordion sections, using aria-controls to specify the desired section
+      document.getElementById(target.getAttribute('aria-controls')).setAttribute('hidden', '');
+    }
+
+    event.preventDefault();
+  }
+});
+
+// Bind keyboard behaviors on the main accordion container
+accordion.addEventListener('keydown', function (event) {
+  var target = event.target;
+  var key = event.which.toString();
+  var active = accordion.querySelector('[aria-expanded="true"]');
+  var isExpanded = target.getAttribute('aria-expanded') == 'true';
+  var allowToggle = (allowMultiple) ? allowMultiple : accordion.hasAttribute('data-allow-toggle');
+
+  // 33 = Page Up, 34 = Page Down
+  var ctrlModifier = (event.ctrlKey && key.match(/33|34/));
+
+  // Is this coming from an accordion header?
+  if (target.classList.contains('Accordion-trigger')) {
+    // Up/ Down arrow and Control + Page Up/ Page Down keyboard operations
+    // 38 = Up, 40 = Down
+    if (key.match(/38|40/) || ctrlModifier) {
+      var index = triggers.indexOf(target);
+      var direction = (key.match(/34|40/)) ? 1 : -1;
+      var length = triggers.length;
+      var newIndex = (index + length + direction) % length;
+
+      triggers[newIndex].focus();
+
+      event.preventDefault();
+    }
+    else if (key.match(/35|36/)) {
+      // 35 = End, 36 = Home keyboard operations
+      switch (key) {
+        // Go to first accordion
+        case '36':
+          triggers[0].focus();
+          break;
+          // Go to last accordion
+        case '35':
+          triggers[triggers.length - 1].focus();
+          break;
+      }
+      event.preventDefault();
+
+    }
+
+  }
+});
+
+// These are used to style the accordion when one of the buttons has focus
+accordion.querySelectorAll('.Accordion-trigger').forEach(function (trigger) {
+
+  trigger.addEventListener('focus', function (event) {
+    accordion.classList.add('focus');
+  });
+
+  trigger.addEventListener('blur', function (event) {
+    accordion.classList.remove('focus');
+  });
+
+});
+
+// Minor setup: will set disabled state, via aria-disabled, to an
+// expanded/ active accordion which is not allowed to be toggled close
+if (!allowToggle) {
+  // Get the first expanded/ active accordion
+  var expanded = accordion.querySelector('[aria-expanded="true"]');
+
+  // If an expanded/ active accordion is found, disable
+  if (expanded) {
+    expanded.setAttribute('aria-disabled', 'true');
+  }
+}
+
+
+
+/////////////
+  //5 march more added finished here for access
+  let target = accordionHeader.parentElement.nextElementSibling;
+  accordionHeader.onclick = () => {
+    let expanded = accordionHeader.getAttribute('aria-expanded') === 'true' || false;
+    accordionHeader.setAttribute('aria-expanded', !expanded);
+    target.hidden = expanded;
+  }
+//})//from let to this closing all this lines were original it was opened originally 5 march closed when i added the functions i copied from waiAria
+
+//end collapsing accordeon headings trial//
+
+//for collapsing buttons//
+var coll = document.getElementsByClassName("collapsible");
+// var i;//
+var k;
+
+// for (i = 0; i < coll.length; i++) {//
+for (k = 0; k < coll.length; k++) {
+  //  coll[i].addEventListener("click", function() {//
+  coll[k].addEventListener("click", function(){
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+} //end collapsing buttons//
+
+
+
+function loadChoices() {
+  if (!localStorage) return;
+
+  const settings = JSON.parse(localStorage.getItem('settings') || '{}');
+  if (settings.hasOwnProperty('useAlerts')) {
+    document.querySelector("#toggle-alerts").checked = settings.useAlerts;
+  }
+  if (settings.hasOwnProperty('font')) {
+    document.querySelector("#select-font").value = settings.font;
+    setFontType(settings.font);
+  }
+  if (settings.hasOwnProperty('fontSize')) {
+    document.querySelector("#select-font-size").value = settings.fontSize;
+    setFontSize(settings.fontSize);
+  }
+  if (settings.hasOwnProperty('backgroundColor')) {
+    document.querySelector("#my-select").value = settings.backgroundColor;
+    setBackgroundColor(settings.backgroundColor);
+  }
+  if (settings.hasOwnProperty('saveChoices')) {
+    document.querySelector("#toggle-save-choices").checked = settings.saveChoices;
+  }
+}
+
+/* finished save choices */
+</script>
+
+</body>
+</html>
