@@ -427,9 +427,8 @@ La tecla de acceso directo (shortcut key)para cada elemento está subrayada.
      aria-labelledby="Accordion-panel"
      aria-flowto=" form panel  GoTo article"  accesskey="i"
      role="button  region text"  aria-expanded="true"
-     onclick="personaliza()" 
      aria-controls="accordion-header-1  data-accordion-header accordion Accordion-trigger">Personal<u>i</u>za</button>  <!--5 march original it was working well substituted for below to check-->
-     
+
 
 <!--trabaja a las 15:44pm y yo pongo esta subdivision aqui arriba  a ver que pasa -->
 
@@ -556,8 +555,9 @@ hidden>
    aria-flowto=" form panel  accordion-header-1 article"  accesskey="g"
    role="button  region text"  aria-expanded="true"
    aria-controls="accordion-header-1  data-accordion-header accordion Accordion-trigger"
-   onclick="goto()" 
-><u>G</u>o To</button>
+
+
+ ><u>G</u>o To</button>
 
    
    <!--   termina aqui sustitucion -->
@@ -577,9 +577,7 @@ hidden>
          <!-- <button type="button" role="button" id= "go-to-Windows" tabindex="0" accesskey="w" src="Windows.html"><u>w</u>indows</button>
             <button type="button" role="button" id= "go-to-instructionsToCarryTrainingExperiment" tabindex="0" accesskey="n" src="instructionsToCarryTrainingExperiment.html"><u>h</u>ow to do the training</button>  -->
             <button type="button" role="button" id= "go-to-HomePage" tabindex="0" accesskey="h" src="HomePage.html"><u>h</u>ome</button> 
-      
-     
-          </div>
+        </div>
 
     </div>
 
@@ -767,7 +765,6 @@ $('article').readmore({speed: 500});//original was 500
   /*toggle Alerts helped by my brother Christian Hetlage from here function for enabling and disabling alerts */
   function isShowingAlerts() {
     return document.querySelector("#toggle-alerts").checked;
-   
   }
   /* finished function for enabling and disabling alerts */
 
@@ -783,7 +780,8 @@ $('article').readmore({speed: 500});//original was 500
     window.location.href = url;
   }
 
- /*alerts for buttons */
+
+  /*alerts for buttons */
 function goToButton(button) {
 
   if  (isShowingAlerts()) {
@@ -814,7 +812,7 @@ function goToButton(button) {
 /*
 
   /*document.querySelector("#go-to-WhatIsAvAriable").addEventListener("click", () => goToUrl("WhatIsAvAriable.html"));//*/
-  //document.querySelector("#go-to-Ejemplos").addEventListener("click",()=> goToUrl(""));
+  //document.querySelector("#go-to-Ejemplos").addEventListener("click",()=> goToUrl("Ejemplos.html"));
   /* finished adding functionality for navigation buttons */
 
   /*button.getElementById('go-to-variable-stars').setAttribute('aria-hidden','true');
@@ -1054,28 +1052,8 @@ if (!allowMultiple && active && active !== target) {
       }
     });
   } //end collapsing buttons//
-//funcion para botton goto//
-// boton 3 MARZO 2024
-function goto() {
-  if (isShowingAlerts()) {
-      const isConfirmed = window.confirm("You pressed a button. Press ok to continue.");
-      if (!isConfirmed) {
-        return;
-      }
-      }
- // alert("se desplegaran mas opciones, presiona escape para salir presiona OK para continuar");//
-}
-//funcion para personaliza//
-function personaliza() {
-  if (isShowingAlerts()) {
-      const isConfirmed = window.confirm("You pressed a button. Press ok to continue.");
-      if (!isConfirmed) {
-        return;
-      }
- // alert("se desplegaran mas opciones para cambiar despliego de tamano , tipo contraste de texto, presiona escape para salir presiona OK para continuar");//
-}
-}
-//boton 3 maRZO 2024//
+
+
 
   function loadChoices() {
     if (!localStorage) return;
@@ -1100,11 +1078,6 @@ function personaliza() {
       document.querySelector("#toggle-save-choices").checked = settings.saveChoices;
     }
   }
-
-  
-
-
-
 
   /* finished save choices */
 </script>

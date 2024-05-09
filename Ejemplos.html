@@ -344,17 +344,14 @@
     </ul>
 </nav>
 <!--end of setting up invisible area to jump directly to buttons area-->
-<a class="screen-reader screen-reader-focusable" href="mailto:wanda.diaz@sagrado.edu">comentarios de Accessibilidad</a>
-<div class= “a” role="text" aria-label = "Esta página tiene opciones para
-personalizarel tamaño de letra, cambiar contraste,  tipo de letra, activar alertas para 
-la prevención de errores, guardar opciones y seleccionar el color de fondo para
-ajustar los contrastes del texto automáticamente.  Las teclas de acceso directo o en ingles shortcut keys
-para acceder a esas opciones se activan utilizando las teclas de acceso directo de asistencia tecnologia 
-de su sistema y la letra minúscula. En Mac, las áreas colisionables se expanden presionando 
-al mismo tiempo el control de la barra espaciadora y la tecla de opción. 
-Por ejemplo, en Mac, las teclas VO más z lo llevarán al área para cambiar el tamaño de la letra.
-VO mas t minúscula para cambiar el tipo de letra y VO más c para cambiar el fondo y el contraste. 
-La tecla de acceso directo (shortcut key)para cada elemento está subrayada." 
+<div class=“a” role="text" aria-label = "This page has options to
+  customize font size, font type set contrast, activate alerts for error prevention, save your options and select background color to
+  adjust text contrasts automatically, shorcut keys to access those options are activated using the assitive technology shorcut keys
+  key of your sistem and the lower case letter. On mac the collisible areas are expanded pressing at the same time spacebar control and option  for example in mac the VO keys plus z wil take you to the area to change font size,
+  VO plays lower case t to change font type and VO plus c to change the back ground and contrast. The shortcut key for each element
+  is underlined which is indicated by the screen reader for example in mac the VO keys plus z wil take you to the area to change font size,
+  VO plays lower case t to change font type and VO plus c to change the back ground and contrast. The shortcut key for each element
+  is underlined which is indicated by the screen reader">
     <p id="textSize2" aria-hidden="false"> </p></div>
 <!--otra aqui abajo a ver si el screen reader se orienta mejor--->
 
@@ -489,6 +486,17 @@ Wait a few seconds while the application launches. It will ask you for a filenam
         <br>
          <a href="massCMELessonwordFormat.docx" download ="massCMELessonwordFormat" alt="massCMELessonwordFormat"> masa emision solar</a>
         <br>
+        <p>
+          <a href="LuzDiametroRadioCirculosMasa.pdf" download="LuzDiametroRadioCirculosMasa" alt="LuzDiametroRadioCirculosMasa" >
+              Luz-Diametro-Radio-Masa</a>
+          <!--<button type="button">Download</button>-->
+          <br>
+
+          <p>
+            <a href="proporciones.pdf" download="proporciones" alt="proporciones" >
+                Proporciones</a>
+            <!--<button type="button">Download</button>-->
+
         <!--<a href="BlackHole3CondStndAloneWindows" download="BlackHole3CondStndAloneWindows" alt="BlackHole3CondStndAloneWindows" >
             3ConditionsTraningWindows</a>-->
         <!--<button type="button">Download</button>-->
@@ -532,7 +540,6 @@ Wait a few seconds while the application launches. It will ask you for a filenam
      aria-labelledby="Accordion-panel"
      aria-flowto=" form panel  GoTo article"  accesskey="i"
      role="button  region text"  aria-expanded="true"
-     onclick="personaliza()"
      aria-controls="accordion-header-1  data-accordion-header accordion Accordion-trigger">Personal<u>i</u>za</button> <!--5 march original it was working well substituted for below to check-->
 
 
@@ -645,9 +652,10 @@ hidden>
        aria-labelledby="Accordion-panel"
        aria-flowto=" form panel  accordion-header-1 article"  accesskey="g"
        role="button  region text"  aria-expanded="true"
-        aria-controls="accordion-header-1  data-accordion-header accordion Accordion-trigger"
-       onclick="goto()" 
-       ><u>G</u>o To</button>
+       aria-controls="accordion-header-1  data-accordion-header accordion Accordion-trigger"
+
+
+     ><u>G</u>o To</button>
 
      <div class="panel">
         <!--  <button class="collapsible">GoTo</button> intento no funciono
@@ -655,14 +663,14 @@ hidden>
 
         <div id="button sect1 accordion1id GoTo" class="button accordion Accordion-trigger" role=" button region" style="width: 100px; padding:0 10px; color:cornflowerblue;">
 
-            <!-- <p id = "alerts"></p>-->
+            <!-- <p id = "alerts"></p>--> 
             <!--<form  alt-hidden="true", .screenreader="false" -->
             <!-- work on buttons on HTML-->
 
 
-            <!--<button type="button" role="button" id= "go-to-MacOS" tabindex="0" accesskey="m" src="MacOS.html"><u>m</u>acOS</button>
+          <!--  <button type="button" role="button" id= "go-to-MacOS" tabindex="0" accesskey="m" src="MacOS.html"><u>m</u>acOS</button>
             <button type="button" role="button" id= "go-to-Windows" tabindex="0" accesskey="w" src="Windows.html"><u>w</u>indows</button>
-            <button type="button" role="button" id= "go-to-instructionsToCarryTrainingExperiment" tabindex="0" accesskey="n" src="instructionsToCarryTrainingExperiment.html"><u>h</u>ow to do the training</button> -->
+            <button type="button" role="button" id= "go-to-instructionsToCarryTrainingExperiment" tabindex="0" accesskey="n" src="instructionsToCarryTrainingExperiment.html"><u>h</u>ow to do the training</button>-->
             <button type="button" role="button" id= "go-to-HomePage" tabindex="0" accesskey="h" src="HomePage.html"><u>h</u>ome</button>
         </div>
 
@@ -879,7 +887,6 @@ function goToButton(button) {
     }
 }
   /* end alerts for buttons
-  
   /* finished function for navigating to another page */
 
   /* finished function for navigating to another page */
@@ -892,10 +899,10 @@ function goToButton(button) {
 
   /* from here adding functionality for navigation buttons */
 
-  /*document.querySelector("#go-to-MacOS").addEventListener("click", () => goToUrl("MacOS.html"));
-  document.querySelector("#go-to-Windows").addEventListener("click", () => goToUrl("Windows.html"));
-  document.querySelector("#go-to-instructionsToCarryTrainingExperiment").addEventListener("click",()=> goToUrl("instructionsToCarryTrainingExperiment.html"));*/
-  document.querySelector("#go-to-HomePage").addEventListener("click", () => goToUrl("HomePage.html"));
+  /* document.querySelector("#go-to-MacOS").addEventListener("click", () => goToUrl("MacOS.html"));*/
+ /*  document.querySelector("#go-to-Windows").addEventListener("click", () => goToUrl("Windows.html")); */
+ /*  document.querySelector("#go-to-instructionsToCarryTrainingExperiment").addEventListener("click",()=> goToUrl("instructionsToCarryTrainingExperiment.html")); */
+ document.querySelector("#go-to-HomePage").addEventListener("click", () => goToUrl("HomePage.html"));
 
 
   /*document.querySelector("#go-to-WhatIsAvAriable").addEventListener("click", () => goToUrl("WhatIsAvAriable.html"));//
@@ -1140,26 +1147,7 @@ if (!allowMultiple && active && active !== target) {
     });
   } //end collapsing buttons//
 
-//alertas para personaliza y goto //
-function goto() {
-  if (isShowingAlerts()) {
-      const isConfirmed = window.confirm("You pressed a button. Press ok to continue.");
-      if (!isConfirmed) {
-        return;
-        }
-      }
- // alert("se desplegaran mas opciones, presiona escape para salir presiona OK para continuar");//
-}
-//funcion para personaliza//
-function personaliza() {
-  if (isShowingAlerts()) {
-      const isConfirmed = window.confirm("You pressed a button. Press ok to continue.");
-      if (!isConfirmed) {
-        return;
-      }
-    }
-  }
-//termina aqui ojala y funcione 
+
 
   function loadChoices() {
     if (!localStorage) return;
